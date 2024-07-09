@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+    <style>
+
+        html,body{
+          width:100%;
+          height: 100%;
+          display:flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          margin: 0;
+          padding: 0;
+          scroll-behavior: smooth;  
+        }
+        .camera
+        {
+            width:350px;
+            height:50%;
+            border: 3px solid black;
+            margin-top: 10px;
+        }
+        .danger {
+          background-color: #ffdddd;
+          border-left: 6px solid #f44336;
+        }
+        .info {
+          background-color: #e7f3fe;
+          border-left: 6px solid #2196F3;
+          width: 80%;
+          margin-bottom: 10%;
+        }
+         @media only screen and (max-width: 1000px) 
+         {
+             .footer
+            {
+              margin-top: 200px;
+              font-size: 10px;
+            } 
+            .camera
+            {
+                width: 420px;
+                height: 40%;
+            }
+          } 
+        @media only screen and (max-width: 600px) {
+
+            .footer{
+              margin-top: 170px;
+              font-size: 10px;
+            }
+            .camera
+            {
+                margin-top: 200px;
+                width: 250px;
+                height: 40%;
+            }
+        }
+        .portal
+        {
+          justify-content: center;
+          text-align: center;
+          width: 50%;
+          height: 50%;
+          padding-top: 4%;
+          border: 3px solid black;
+          border-radius: 15px;
+          box-shadow:  12px #2196F3;
+        }
+        .portal h1
+        {
+          color: transparent;
+          font-family: sans-serif;
+
+          -webkit-text-stroke: 2px black;
+          font-size: 3rem;
+          /* background: yellow;? */
+          -webkit-background-clip: text;
+          padding-bottom: 5%;
+          background-position: 0 0;
+          animation: back 3s linear infinite;
+        }
+        @keyframes back{
+          0%
+          {
+              background-color: black;
+          }
+          50%
+          {
+              background-color: white;
+          }
+          100%
+          {
+              background-color: black;
+          }
+        }
+
+    </style>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Attendance</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet"> 
+    </head>
+    <body>
+        <form action="/give_attendance" method="POST" style="display:flex;flex-direction: row;gap:5%;" id="main_form"></form>
+        <input id="photo" style="display:none;" form="main_form" name="photo_data">
+        <input type="text" style="display:none;" form="main_form" name="class_name" value="{{class_name}}">
+        <br>
+        <div id="count"></div>
+        <div>
+          <form action="/profile/admin/download/" method="POST" style="display:flex;flex-direction: row;gap:5%;" id="download_form"></form>
+          <input type="text" style="display:none;" form="download_form" name="class_name" value="{{class_name}}">
+        </div>
+          <div class="portal">
+            <h1>ATTENDANCE FILE</h1>
+            <center>
+              <div class="info">
+                <p>Click on Attendance file to go the download page</p>
+              </div>
+            </center>
+         <button type="button" onclick="download_csv_file()"  class="btn btn-danger">Attendance file</button>
+            <a style="outline:none;text-decoration: none;" href="/profile/admin/close/?class={{class_name}}"><button type="button" form="attnd_form" class="btn btn-danger">Go back</button></a>
+          </div>
+        
+
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+      <script>
+        //create CSV file data in an array
+        var csvFileData_string = '{{attendance| tojson}}'
+        var csvFileData = Array.from(JSON.parse(csvFileData_string))
+       
+        //create a user-defined function to download CSV file 
+        function download_csv_file() {
+        
+            //define the heading for each row of the data
+            var csv = 'Name,Roll,Time\n';
+            
+            //merge the data with CSV
+            csvFileData.forEach(function(row) {
+                    csv += row.join(',');
+                    csv += "\n";
+            });
+         
+            //display the created CSV data on the web browser 
+           
+        
+           
+            var hiddenElement = document.createElement('a');
+            hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
+            hiddenElement.target = '_blank';
+            
+            //provide the name for the CSV file to be downloaded
+            hiddenElement.download = '{{file_sheet}}';
+            hiddenElement.click();
+        }
+        </script>
+     
+  
+      <!-- Code to handle taking the snapshot and displaying it locally -->
+    </body>
+</html>

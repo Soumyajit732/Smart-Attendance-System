@@ -1,0 +1,412 @@
+<html lang="en">
+    <style>
+
+        html,body{
+          width:100%;
+          height: 100%;
+          display:flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          margin: 0;
+          padding: 0;
+          scroll-behavior: smooth;  
+        }
+        .main-cont{
+            display: flex;
+            width:100%;
+            height: 100%;
+            max-height: 80vh;
+            margin-bottom: 100px;
+        }
+        .main-body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width:60%;
+            height:100%;
+            font-family: 'Roboto Slab', serif;
+            font-size: large;
+        }
+        .main-body-cont{
+            width:50%;
+            height:80%; 
+        }
+        .side-body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width:50%;
+            height:100%;   
+        }
+        .side-body-cont{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width:90%;
+            height:80%;
+            border-left: 3px solid #ffb600; 
+        }
+        .text-field{
+          display:flex;
+          align-items: center;
+          gap:2%;
+          color:rgb(85, 84, 84);
+        }
+        .fa-circle-check{
+          transform:scale(1.5);
+          color:#ffb600;
+        }
+        #universities{
+          border-bottom: 1px solid grey;
+          border-top: 1px solid white;
+          border-left: 1px solid white;
+          border-right: 1px solid white;
+          outline: none;
+        }
+
+        .display{
+            border: 2px solid black;
+            width: 100px;
+            height: 100px;
+            border-radius: 50px; 
+           overflow: hidden; 
+        }
+        #upload{
+            display: none;
+        }
+
+        .display img{
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            object-fit: cover;
+        }
+
+
+        #camera_reg{
+          display:none;
+        }
+         
+        .danger {
+  background-color: #ffdddd;
+  border-left: 6px solid #f44336;
+}
+.info {
+  background-color: #e7f3fe;
+  border-left: 6px solid #2196F3;
+}
+
+        @media only screen and (max-width: 1200px) {
+            .main-cont{
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                margin-top: 500px;
+                min-width: 100%;
+            }
+            .main-body
+            {
+              margin-top: 100px;
+              min-width: 100%;
+              font-size: medium;
+            }
+            .footer
+            {
+              margin-top: 130px;
+              font-size: 10px;
+            }
+            .display
+            {
+              width: 70px;
+              height: 70px;
+              border-radius: 35px; 
+            }
+           
+          }
+        @media only screen and (max-width: 600px) {
+          .main-body{
+              font-size: 10px;
+              margin-top: 75px;
+            }
+            .main-cont{
+              margin-top: 400px;
+            }
+            .footer{
+              margin-top: 170px;
+              font-size: 10px;
+            }
+            .profile{
+              font-size:10px;
+              flex-direction: column;
+              align-items: center;
+            }
+            .profile label{
+              font-size: 10px;
+            }
+            .heading{
+              font-size: 20px;
+            }
+        }
+        @media only screen and (max-width: 300px){
+          /* .main-cont
+          {
+                
+          } */
+            .heading
+            {
+              padding-left: 40px;
+            }
+        }
+
+ 
+
+    </style>
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Student Registration</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet"> 
+  </head>
+
+  <body>
+
+    <!-- Navbar -->
+
+    <nav class="navbar fixed-top navbar-expand-md navbar-dark bg-dark" style="width:100%">
+     
+      <div class="container-fluid">
+        <img src="{{url_for('static', filename='presence10.png')}}" style="width:150px">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+          </ul>
+          <div class="text-end">
+              <a href="/Student_signup"> <button type="button" class="btn btn-outline-light me-2" >Student Registration</button></a>
+              
+              <a href="/Admin_signup"><button type="button" class="btn" style="background-color:  #ffb600;color:white;">Admin Registration</button></a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+      <!-- Main Body -->
+
+    <br><br><br><br>
+      <h1 class="heading" style="position: absolute;top: 10%;font-family: 'Montserrat', sans-serif;text-align: center;">
+  
+      STUDENT REGISTRATION
+    
+      </h1><br>
+      {% with messages = get_flashed_messages() %}
+         {% if messages %}
+       <div class="notification is-danger">
+        {{ messages[0] }}. Go to <a href="/">login page</a>.
+      </div>
+         {% endif %}
+        {% endwith %}
+        <form action="/Student_signup" method="POST" style="display:flex;flex-direction: row;gap:5%;" id="main_form"></form>
+      <div class="main-cont" id="details_reg">
+          <div class="main-body">
+            <div class="main-body-cont">
+            
+              <div style="height:100%;display:flex;flex-direction: column;gap:5%;">
+                <br>
+                <div class="form-floating">
+                  <input type="text" class="form-control" id="floatingInput" form="main_form" name="first_name" placeholder="First Name">
+                  <label  style="display:flex;align-items:center;gap:5%;" for="floatingInput"><i class="fa-solid fa-user"></i>First Name</label>
+                </div>
+                <div class="form-floating">
+                  <input type="text" class="form-control" id="floatingInput" form="main_form" name="last_name" placeholder="Last Name">
+                  <label  style="display:flex;align-items:center;gap:5%;" for="floatingInput"><i class="fa-solid fa-user"></i>Last Name</label>
+                </div>
+                <div class="form-floating" style="display:flex;align-items:center;gap:4%;">
+                  Gender : 
+                  <input form="main_form" type="radio" name="gender" value="Male">Male
+                  <input form="main_form" type="radio" name="gender" value="Female">Female
+               </div>
+                <div class="form-floating">
+                  <input type="text" class="form-control" id="floatingInput" form="main_form" name="roll" placeholder="Roll">
+                  <label  style="display:flex;align-items:center;gap:5%;" for="floatingInput"><i class="fa-solid fa-user"></i>Roll</label>
+                </div>
+                <div class="form-floating">
+                  <input type="number" class="form-control" id="floatingInput" form="main_form" name="mobile_no" placeholder="Mobile No." pattern="[0-9]{10}">
+                  <label  style="display:flex;align-items:center;gap:5%;" for="floatingInput"><i class="fa-solid fa-phone"></i>Mobile No.</label>
+                </div>
+
+                <div class="form-floating">
+                  <input type="email" class="form-control" id="floatingInput" form="main_form" name="email_id" placeholder="Email ID">
+                  <label  style="display:flex;align-items:center;gap:5%;" for="floatingInput"><i class="fa-solid fa-envelope"></i>Email ID</label>
+                </div>
+
+                <div class="form-floating" style="display:flex;align-items:center;gap:5%;">
+                  <i class="fa-solid fa-building-columns"></i> University/College/Institute:
+                  <select id="universities" form="main_form" name="universities">
+                    <option  disabled selected>Choose your institute</option>
+                   {% for inst in uni %}
+                    <option value="{{inst.uni_name}}">{{inst.uni_name}}</option>
+                    {% endfor %}
+                  </select>
+              </div>
+            </div>
+            </div>
+          </div>
+          <div class="main-body">
+              <div class="main-body-cont">
+                <div style="height:100%;display:flex;flex-direction: column;gap:5%;">
+        
+                    <div class="profile" style="display: flex;font-size: 20px;width:100%;">
+                    <input type="text" form="main_form" style="display:none;" name="profile_pic" id="profile_pic_data">
+                    <input type="file"  id="upload" accept="image/png, image/jpg, image/jpeg">
+                    <label  style="cursor: pointer;border-radius: 10px;font-size:18px;" for="upload">
+                        <br><i id="profile_pic" class="fa-solid fa-user-shield fa-4x"></i>
+                        <div class="display" style="display:none;"></div>&emsp;
+                    </label>&emsp;&emsp;
+                    
+                   </div>
+                    <div class="form-floating">
+                      <input type="text" class="form-control" id="floatingInput" name="username" form="main_form" placeholder="Username">
+                      <label  style="display:flex;align-items:center;gap:5%;" for="floatingInput"><i class="fa-solid fa-user"></i>Username</label>
+                    </div>
+                    
+                    <div class="form-floating">
+                      <input type="password" class="form-control" form="main_form" name="password" id="floatingPassword" placeholder="Password">
+                      <label style="display:flex;align-items:center;gap:5%;" for="floatingPassword"><i class="fa-solid fa-lock"></i>Password</label>
+                    </div>
+
+                    <div class="form-floating">
+                      <input type="password" class="form-control" form="main_form" name="conf_password" id="floatingPassword" placeholder="Confirm Password">
+                      <label style="display:flex;align-items:center;gap:5%;" for="floatingPassword"><i class="fa-solid fa-lock"></i>Confirm Password</label>
+                    </div>
+                
+                    <button class="w-100 btn btn-lg" style="background-color: #ffb600;" id="submit"><i class="fa-solid fa-right-to-bracket"></i> Next</button>
+                  </div>
+              </div>   
+  
+        </div>
+
+      </div>
+      <div class="main-body" id="camera_reg">
+        <div class="main-body-cont">
+          <div class="info">
+            <p>This step includes you registering your face for the administration system to recognize you next time you give your attendance.Be patient for a smooth and speedy process</p>
+          </div>
+          
+        <div class="danger">
+            <p><strong>Note :</strong> Stay in an enviroment where your face is clearly visible to the camera. Look straight into the camera to properly register your face</p>
+        </div>
+        <input id="photo" style="display:none;" form="main_form" name="photo_data">
+        <div class="camera" id="my_camera"></div>
+        <br>
+        <div id="count"></div>
+        <div>
+          <button type="button" class="btn btn-dark" id="take_records">Take Face Records</button>&emsp;
+            <button form="main_form" type="submit" class="btn btn-warning">Register</button>
+        </div>
+
+        </div>
+      </div>
+      
+      <!-- Footer -->
+
+      <div class="footer" style="background-color:white;width:90%;">
+        <footer class="d-flex  flex-wrap justify-content-between align-items-center py-3 my-4 border-top" style="z-index:2;" >
+          <p class="col-md-4 mb-0 text-muted">&copy; 2023 Company, Inc</p>
+           
+          <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+            <img src="{{url_for('static', filename='presence11.png')}}" style="width:150px">
+          </a>
+      
+          <ul class="nav col-md-4 justify-content-end">
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Contact</a></li>
+           
+          </ul>
+        </footer>
+      </div>
+
+      <script>
+ 
+ document.getElementById("submit").addEventListener("click",()=>{
+    document.getElementById("camera_reg").style.display="block";
+    document.getElementById("details_reg").style.display="none";
+  });
+
+        const display = document.querySelector(".display");
+        const input = document.querySelector("#upload");
+        const label = document.querySelector("#profile_pic");
+         const profile = document.getElementById("profile_pic_data");
+        let img = document.querySelector("img");
+
+        input.addEventListener("change", () => {
+          let reader = new FileReader();
+          reader.readAsDataURL(input.files[0]);
+          reader.addEventListener("load", () => {
+            display.style.display="block";
+            label.style.display="none";
+            display.innerHTML = `<img src=${reader.result} alt=''/>`;
+            profile.value=reader.result;
+          });
+        });
+      </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.26/webcam.min.js"></script>
+
+    <!-- Code to handle taking the snapshot and displaying it locally -->
+    <script language="JavaScript">
+
+     // Configure a few settings and attach camera
+     Webcam.set({
+         width: 320,
+         height: 240,
+         image_format: 'jpeg',
+         jpeg_quality: 90
+     });
+     Webcam.attach( '#my_camera' );
+
+     // preload shutter audio clip
+
+
+    function take_snapshot(count) {
+       Webcam.snap( function(data_uri) {
+          // display results in page
+          let text=document.getElementById('photo').value
+          if(count!=20)text+=data_uri+"*";
+          else
+          text+=data_uri;
+          document.getElementById('photo').value=text;
+
+        });
+    }
+    document.getElementById("take_records").addEventListener("click",()=>{
+        document.getElementById('count').innerHTML="SCANNING FACE DONT MOVE........"
+       count=1;
+         let id=setInterval(()=>{
+          take_snapshot(count);
+          count++;
+          if(count==21){
+          document.getElementById('count').innerHTML="SCAN COMPLETE";
+          clearInterval(id)
+          };
+         },100)
+      })
+    </script>
+  </body>
+</html>

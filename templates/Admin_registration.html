@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+    <!--css-->
+  <style>
+
+    html,body{
+      
+      width:100%;
+      height: 135%;
+      display:flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;  
+    }
+    .main-cont{
+        
+        display: flex;
+        width:100%;
+        height: 100%;
+        max-height: 80vh;
+        margin-bottom: 100px;
+    }
+    .main-body{
+        
+        display: flex;
+        align-items: center;
+        justify-content:center;
+        width:60%;
+        height:120%;
+        font-family: 'Roboto Slab', serif;
+        font-size: large;
+    }
+    .main-body-cont{
+        width:50%;
+        height:80%;
+    }
+    .side-body{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width:50%;
+        height:100%;   
+    }
+    .side-body-cont{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width:90%;
+        height:80%;
+        border-left: 3px solid #ffb600; 
+    }
+    .text-field{
+      display:flex;
+      align-items: center;
+      gap:2%;
+      color:rgb(85, 84, 84);
+    }
+    .fa-circle-check{
+      transform:scale(1.5);
+      color:#ffb600;
+    }
+    #universities{
+      border-bottom: 1px solid grey;
+      border-top: 1px solid white;
+      border-left: 1px solid white;
+      border-right: 1px solid white;
+      outline: none;
+    }
+
+    .display{
+        border: 2px solid black;
+        width: 100px;
+        height: 100px;
+        border-radius: 50px; 
+       overflow: hidden; 
+    }
+    #upload{
+        display: none;
+    }
+
+    .display img{
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        object-fit: cover;
+    }
+    #extra_field{
+      display:none;
+    }
+    .heading{
+          font-size: 220%;
+        }
+    @media only screen and (max-width: 1200px) {
+        .main-cont{
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top:300px;
+            min-width: 100%;
+        }
+        .main-body
+        {
+          margin-top: 100px;
+          min-width: 100%;
+          font-size: medium;
+        }
+        .footer
+        {
+          margin-top: 130px;
+          font-size: 10px;
+        }
+        .display
+        {
+          width: 70px;
+          height: 70px;
+          border-radius: 35px; 
+        }
+        .heading{
+          font-size: 150%;
+        }
+      }
+    @media only screen and (max-width: 600px) {
+      .main-body{
+          font-size: 10px;
+          margin-top: 75px;
+        }
+        .main-cont{
+            margin-top:570px;
+        }
+        .footer{
+          margin-top: 170px;
+          font-size: 10px;
+        }
+        .profile{
+          font-size:10px;
+          flex-direction: column;
+          align-items: center;
+        }
+        .profile label{
+          font-size: 10px;
+        }
+        .heading{
+          font-size: 150%;
+        }
+    }
+    @media only screen and (max-width: 300px){
+      .main-cont{
+            margin-top:600px;
+        }
+        .heading
+        {
+          padding-left: 40px;
+        }
+    }
+
+
+
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet"> 
+<script src="https://kit.fontawesome.com/3436050094.js" crossorigin="anonymous"></script>
+
+
+</head>
+<body>
+    
+
+    <!--navbar-->
+
+   
+ 
+    <nav class="navbar fixed-top navbar-expand-md navbar-dark bg-dark">
+     
+      <div class="container-fluid">
+        <img src="{{url_for('static', filename='presence10.png')}}" style="width:150px">
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/">Home</a>
+            </li>
+          </ul>
+          <div class="text-end">
+              <a href="/Student_signup"> <button type="button" class="btn btn-outline-light me-2" >Student Registration</button></a>
+
+              <a href="/Admin_signup"><button type="button" class="btn" style="background-color:  #ffb600;color:white;">Admin Registration</button></a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+      <!--main body-->
+
+
+      <br><br><br><br>
+      <div class="heading" style="position: absolute;top: 20%;font-family: 'Montserrat', sans-serif;text-align: center;">
+      
+      <br>
+      ADMIN REGISTRATION
+    
+      </div><br>
+       {% with messages = get_flashed_messages() %}
+         {% if messages %}
+       <div class="notification is-danger">
+        {{ messages[0] }}. Go to <a href="/">login page</a>.
+      </div>
+         {% endif %}
+        {% endwith %}
+    <form action="/Admin_signup" method="POST" style="display:flex;flex-direction: row;gap:5%;" id="main_form"></form>
+      <div class="main-cont">
+          <div class="main-body">
+            <div class="main-body-cont">
+
+              <div style="height:100%;display:flex;flex-direction: column;gap:5%;">
+                <br>
+                <div class="shadow mb=7 bg=white">
+                <div class="form-floating">
+                  
+                  <input type="text" form="main_form" class="form-control" id="floatingInput" name="first_name" placeholder="First Name" required="required">
+                  <label  style="display:flex;align-items:center;gap:5%;" for="floatingInput"><i class="fa-solid fa-user"></i>First Name</label></div>
+                </div>
+                <div class="shadow mb=5 bg=white">
+                <div class="form-floating">
+                  <input type="text" form="main_form" class="form-control" id="floatingInput" name="last_name" placeholder="Last Name">
+                  <label  style="display:flex;align-items:center;gap:5%;" for="floatingInput"><i class="fa-solid fa-user"></i>Last Name</label></div>
+                </div>
+                <div class="form-floating" style="display:flex;align-items:center;gap:4%;">
+                  Gender : 
+                  <input form="main_form" type="radio" name="gender" value="Male">Male
+                  <input form="main_form" type="radio" name="gender" value="Female">Female
+               </div>
+                <div class="shadow mb=5 bg=white">
+                <div class="form-floating">
+                  <input type="number" form="main_form" class="form-control" id="floatingInput" name="mobile_no" placeholder="Mobile No.">
+                  <label  style="display:flex;align-items:center;gap:5%;" for="floatingInput"><i class="fa-solid fa-phone"></i>Mobile No.</label></div>
+                </div>
+                <div class="shadow mb=5 bg=white">
+                <div class="form-floating">
+                  <input type="email" form="main_form" class="form-control" id="floatingInput" name="email_id" placeholder="Email ID">
+                  <label  style="display:flex;align-items:center;gap:5%;" for="floatingInput"><i class="fa-solid fa-envelope"></i>Email ID</label></div>
+                </div>
+      
+                <div class="form-floating" style="display:flex;align-items:center;gap:5%;">
+                  <i class="fa-solid fa-building-columns"></i> University/College/Institute:
+                  <select id="universities" form="main_form" name="universities" onchange='select_institute(this.value);'>
+                      <option  disabled selected>Choose your institute</option>
+                     {% for inst in uni %}
+                      <option value="{{inst.uni_name}}">{{inst.uni_name}}</option>
+                      {% endfor %}
+                      <option value="others">Other</option>
+                    </select>
+                  </div>
+                    
+                    <div class="shadow mb=5 bg=white">
+                      <div id="extra_field" class="form-floating">
+                        </i><input type="text" form="main_form" id="institute" class="form-control" name="new_institute" id="floatingInput" placeholder="Email ID">
+                        <label  style="display:flex;align-items:center;gap:5%;" for="floatingInput"><i class="fa-solid fa-circle-plus"></i>Add Institute</label>
+                      </div>
+                    </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="main-body">
+              <div class="main-body-cont">
+                <div style="height:100%;display:flex;flex-direction: column;gap:5%;">
+                  
+                  <br>
+                    <div class="profile" style="display: flex;font-size: 20px;width:100%;">
+
+                      &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                     
+                      <input type="text" form="main_form" style="display:none;" name="profile_pic" id="profile_pic_data">
+                      <input type="file"  id="upload" accept="image/png, image/jpg, image/jpeg">
+                      <label  style="cursor: pointer;border-radius: 10px;font-size:18px;" for="upload">
+                          <br><i id="profile_pic" class="fa-solid fa-user-shield fa-4x"></i>
+                          <div class="display" style="display:none;"></div>&emsp;
+                      </label>&emsp;&emsp;
+                      
+                      
+                    
+                    </label>&emsp;&emsp;
+                    
+                   </div>
+                   <div class="shadow mb=5 bg=white">
+                    <div class="form-floating">
+                      <input type="text" form="main_form" class="form-control" id="floatingInput" name="username" placeholder="Username">
+                      <label  style="display:flex;align-items:center;gap:5%;" for="floatingInput"><i class="fa-solid fa-user"></i>Username</label></div>
+                    </div>
+                    
+                    <div class="shadow mb=5 bg=white">
+                    <div class="form-floating">
+                      <input type="password" form="main_form" class="form-control" id="floatingPassword" name="password" placeholder="Password">
+                      <label style="display:flex;align-items:center;gap:5%;" for="floatingPassword"><i class="fa-solid fa-lock"></i>Password</label></div>
+                    </div>
+
+                    <div class="shadow mb=5 bg=white">
+                    <div class="form-floating">
+                      <input type="password" form="main_form" class="form-control" id="floatingPassword" name="conf_password" placeholder="Confirm Password">
+                      <label style="display:flex;align-items:center;gap:5%;" for="floatingPassword"><i class="fa-solid fa-lock"></i>Confirm Password</label></div>
+                    </div>
+                    
+                    <br>
+                    <div class="shadow mb=5 bg=white">
+                    <button class="w-100 btn btn-lg" style="background-color: #ffb600;" type="submit" id="submit"><i class="fa-solid fa-right-to-bracket"></i> Register</button></div>
+                </div>
+              </div>
+
+        </div>
+
+      </div>
+
+    <!--footer-->
+    
+    
+    <div class="footer" style="background-color:white;width:90%;">
+      <footer class="d-flex  flex-wrap justify-content-between align-items-center py-3 my-4 border-top" style="z-index:2;" >
+        <p class="col-md-4 mb-0 text-muted">&copy; 2023 Company, Inc</p>
+         
+        <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+          <img src="{{url_for('static', filename='presence11.png')}}" style="width:150px">
+        </a>
+    
+        <ul class="nav col-md-4 justify-content-end">
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
+         
+        </ul>
+      </footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</body>
+
+
+
+<script type="text/javascript">
+  function select_institute(val)
+  {
+    var element=document.getElementById('extra_field');
+    if(val=='choose your institute'||val=='others')
+    {
+      element.style.display='block';
+    }
+    else{
+      element.style.display='none';
+    }
+  }
+  document.getElementById("submit").addEventListener("click",()=>{
+    document.getElementById("main_form").submit()
+    document.getElementById("profile_pic_data").disabled=true;
+  })
+
+  const display = document.querySelector(".display");
+        const input = document.querySelector("#upload");
+        const label = document.querySelector("#profile_pic");
+         const profile = document.getElementById("profile_pic_data");
+        let img = document.querySelector("img");
+
+        input.addEventListener("change", () => {
+          let reader = new FileReader();
+          reader.readAsDataURL(input.files[0]);
+          reader.addEventListener("load", () => {
+            display.style.display="block";
+            label.style.display="none";
+            display.innerHTML = `<img src=${reader.result} alt=''/>`;
+            profile.value=reader.result;
+          });
+        });
+
+</script>
+</html>
